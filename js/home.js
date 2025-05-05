@@ -5,7 +5,7 @@ var nodes = new vis.DataSet([
   { id: 1, label: 'blog', title: '../blog/' },
   { id: 2, label: 'comments', title: './blog/1/' },
   { id: 3, label: 'contact', title: './blog/1/' },
-  { id: 4, label: 'projects', title: './blog/1/' },
+  { id: 4, label: 'projects', title: '../blog/1/' },
   { id: 5, label: 'my book', title: './blog/1/' },
   { id: 6, label: 'شعر', title: './blog/1/' },
 ]);
