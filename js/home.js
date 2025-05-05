@@ -2,7 +2,7 @@
 // create an array with nodes
 var nodes = new vis.DataSet([
   { id: 0, label: 'In this web', title: '#' },
-  { id: 1, label: 'blog', title: './blog/' },
+  { id: 1, label: 'blog', title: './blog/1/' },
   { id: 2, label: 'comments', title: './blog/1/' },
   { id: 3, label: 'contact', title: './blog/1/' },
   { id: 4, label: 'projects', title: './blog/1/' },
