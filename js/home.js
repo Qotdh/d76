@@ -1,8 +1,6 @@
-
-// create an array with nodes
 var nodes = new vis.DataSet([
   { id: 0, label: 'In this web', title: '#' },
-  { id: 1, label: 'blog', title: './blog/1/' },
+  { id: 1, label: 'blog', title: './blog/' },
   { id: 2, label: 'comments', title: './blog/1/' },
   { id: 3, label: 'contact', title: './blog/1/' },
   { id: 4, label: 'projects', title: './blog/1/' },
@@ -109,7 +107,6 @@ function timeSinceUpdate(lastUpdate) {
     }
 
     const parts = [];
-
     if (diffMonths > 0) {
         parts.push(`${diffMonths} ${pluralize(diffMonths, 'month', 'months')}`);
     } else if (diffWeeks > 0) {
@@ -128,9 +125,9 @@ function timeSinceUpdate(lastUpdate) {
     if (parts.length === 0) {
         parts.push(`${diffSeconds} ${pluralize(diffSeconds, 'second', 'seconds')}`);
     }
-
     return parts.join(', ');
 }
+
 function fetchUpdateDetails() {
         fetch("./update_log.json")
             .then(response => response.json())
@@ -160,4 +157,3 @@ function fetchUpdateDetails() {
             });
     }
     fetchUpdateDetails();
-    
