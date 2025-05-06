@@ -1,8 +1,8 @@
-var nodes = new vis.DataSet([
+ var nodes = new vis.DataSet([
   { id: 0, label: 'In this web', title: '#' },
   { id: 1, label: 'blog', title: './blog/' },
   { id: 2, label: 'comments', title: './blog/1/' },
-  { id: 3, label: 'contact', title: './blog/1/' },
+  { id: 3, label: 'report', title: './blog/1/' },
   { id: 4, label: 'projects', title: './blog/1/' },
   { id: 5, label: 'my book', title: './blog/1/' },
   { id: 6, label: 'شعر', title: './blog/1/' },
@@ -25,36 +25,49 @@ var data = {
   nodes: nodes,
   edges: edges
 };
-var options = {
-  nodes: {
-    shape: 'box',
-    font: {
-      color: '#ffffff',
-      face: 'monospace',
-      size: 16,
-      align: 'center'
+  var options = {
+    nodes: {
+      shape: 'box',
+      font: {
+        color: "#ededed",
+        face: 'monospace',
+        size: 16,
+        align: 'center'
+      },
+      color: {
+        border: '#444444',
+        background: "#1e1e1e",
+      },
+      widthConstraint: { minimum: 90 },
+      heightConstraint: { minimum: 30 },
+      shadow: false,
+      hover: false,
+      chosen: false, // ←←← مهم جدًا
+      borderWidth: 1,
+      borderWidthSelected: 0 // ←←← يوقف التأثير عند المرور
     },
-    color: {
-      border: '#444444',
-      background: '#1e1e1e'
+    edges: {
+      color: {
+        color: '#888888',
+        highlight: '#888888' // نفس اللون لتجنب التأثير
+      },
+      width: 1.2,
+      hoverWidth: 0, // ←←← مهم
+      selectionWidth: 0,
+      smooth: true,
+      hover: false
     },
-    widthConstraint: { minimum: 90 },
-    heightConstraint: { minimum: 30 }
-  },
-  edges: {
-    color: {
-      color: '#888888',
-      highlight: '#aaaaaa'
+    interaction: {
+      dragNodes: true,
+      zoomView: true,
+      hover: false,
+      keyboard: true,
+      tooltips: false,
+      highlightNearest: false,
+      navigationButtons: false
     },
-    width: 1.2
-  },
-  backgroundColor: '#111111',
-  interaction: {
-    dragNodes: true,
-    zoomView: true,
-    keyboard: true
-  }
-};
+    tooltip: false
+  };
 var network = new vis.Network(container, data, options);
 network.on("click", function(params) {
   if (params.nodes.length > 0) {
