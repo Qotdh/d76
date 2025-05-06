@@ -30,8 +30,14 @@
   --terminal-color: #ededed;
   --terminal-color-old: #eec35e;
   --terminal-color-green: #56d364;
+  
+  --vis-bg: #1e1e1e;
+  --vis-edg: #888888;
 }
 .light_theme {
+  --vis-edg: #ededed;
+  --vis-bg: red;
+   --color-border: #444444;
    --bg-color: #ffffff;
    --text-color: #000000;
    --bg-cod: #fff;
@@ -597,4 +603,8 @@ article{
   50%  { content: '..'; }
   75%  { content: '...'; }
   100% { content: ''; }
+}
+.vis:hover {
+    background-color: #ff5733 !important;
+    color: white !important;
 }
