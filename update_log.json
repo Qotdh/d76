@@ -1,14 +1,10 @@
 {
-    "lastUpdate": "2025-05-03T19:31",
+    "lastUpdate": "2025-05-06T05:30",
     "pub": "may 05, 2025",
     "newFeatures": [
       "add blog page"
     ],
-    "viwe": [
-      "V1.7"
-    ],
     "bugFixes": [
       "fix some bugs"
-    ],
-      "visits": 0
+    ]
 }
