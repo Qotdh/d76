@@ -13,8 +13,7 @@
 }
 
 :root {
-   --bg-color: #111;
- /*  --bg-color: #1a1a1a; */
+   --bg-color: #1a1a1a;
    --text-color: #ffffff;
    --bg-cod: #111;
    --bg-cod-header: #222;
@@ -201,7 +200,6 @@ nav a:hover {
    color: #56d364; */
    margin: 0 auto;
    width: fit-content;
-   position: relative;
 }
 .terminal_bg{
   border: 1px solid #30363d;
@@ -261,9 +259,7 @@ code{
   max-width:750px;
   width:100%;
   position: relative;
-  padding: 0 1rem;
-  border-radius: 5px;
-  border: 1px dotted #444;
+  padding: 4px 1rem;
 }
 .patch a{
   color: white;
@@ -285,7 +281,7 @@ code{
    position: relative;
    cursor: grab;
    user-select: none;
-   padding: 0 4px;
+   padding: 0;
    font-size: 14px;
 }
 
@@ -635,7 +631,6 @@ article{
   display: flex;
   flex-direction: column;
   gap: 0;
-  
   border-bottom: 1px dashed #333;
   border-radius: 0;
   padding: 0 1rem 1rem;
@@ -654,84 +649,5 @@ article{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-}
-.terminal_dote{
-  display: flex;
-  gap: 8px;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-.terminal_dote span{
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #222;
-}
-/* comment */
-.comment_title{
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  flex-direction: row;
-  gap: 1rem;
-  font-size: 1.2rem;
-  
-}
-.comment_message{
-  padding: 0;
-  margin: 0;
-  font-size: 1rem;
-  text-align: justify;
-}
-.comment_img{
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-.comment_card{
-  direction: rtl;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-bottom: 1px dashed #333;
-  border-radius: 0;
-  padding: 0 1rem 1rem;
-  min-width: 400px;
-  max-width: 600px;
-  line-height: 1;
-  font-size: .8rem ;
-  position: relative;
-}
-.comment_time{
-  color: var(--color-comment);
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  direction: ltr;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-}
-
-.comment_heart{
-  color: var(--color-comment);
-  direction: ltr;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  font-size: 1rem;
-  color: #e31b23;
-}
-.comment_heart img{
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  color: var(--color-comment);
-  direction: ltr;
-  display: flex;
   gap: 4px;
 }

@@ -1,7 +1,7 @@
  var nodes = new vis.DataSet([
   { id: 0, label: 'In this web', title: '#' },
-  { id: 1, label: 'blog', title: './blog/' },
-  { id: 2, label: 'comments', title: './comments/' },
+  { id: 1, label: 'blog', title: '../blog/' },
+  { id: 2, label: 'comments', title: '../comments' },
   { id: 3, label: 'report', title: './blog/1/' },
   { id: 4, label: 'projects', title: './blog/1/' },
   { id: 5, label: 'my book', title: './blog/1/' },
@@ -145,12 +145,12 @@ function fetchUpdateDetails() {
         fetch("./update_log.json")
             .then(response => response.json())
             .then(data => {
-                let updateHTML =``;
+                let updateHTML =`<div class="update_line">   <span class="tr_txt ">created</span>: <span class="tr_txt2">${data.pub}</span><br></div>`;
 
-            updateHTML += ``;
+            updateHTML += ` <div class="update_line">  <span class="tr_txt ">lastUpdate</span>: <span class="tr_txt2" dir="ltr">${timeSinceUpdate(data.lastUpdate)}</span><br></div>`;
 
                 if (data.newFeatures.length > 0) {
-                    updateHTML += ` <div class="update_line"> <span class="tr_txt ">features</span>:`;
+                    updateHTML += ` <div class="update_line"> <span class="tr_txt ">newFeatures</span>:`;
                     data.newFeatures.forEach(feature => {
                         updateHTML += `<span class="tr_txt2">${feature}</span></div>`;
                     });

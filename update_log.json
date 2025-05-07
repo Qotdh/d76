@@ -1,10 +1,10 @@
 {
-    "lastUpdate": "2025-05-06T23:30",
+    "lastUpdate": "2025-05-07T18:30",
     "pub": "may 05, 2025",
     "newFeatures": [
-      "add blog page"
+      " update comments page"
     ],
     "bugFixes": [
-      "fix some bugs"
+      "smooth / fast browsimg"
     ]
 }

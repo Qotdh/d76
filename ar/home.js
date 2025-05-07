@@ -1,11 +1,11 @@
  var nodes = new vis.DataSet([
-  { id: 0, label: 'In this web', title: '#' },
-  { id: 1, label: 'blog', title: './blog/' },
-  { id: 2, label: 'comments', title: './comments/' },
-  { id: 3, label: 'report', title: './blog/1/' },
-  { id: 4, label: 'projects', title: './blog/1/' },
-  { id: 5, label: 'my book', title: './blog/1/' },
-  { id: 6, label: 'شعر', title: './blog/1/' },
+  { id: 0, label: 'في هذا الموقع', title: '#' },
+  { id: 1, label: 'المقالات', title: '../blog/' },
+  { id: 2, label: 'التعليقات', title: '../blog/1/' },
+  { id: 3, label: 'إبلاغ', title: '../blog/1/' },
+  { id: 4, label: 'المشاريع', title: '../blog/1/' },
+  { id: 5, label: 'كتبي', title: '../blog/1/' },
+  { id: 6, label: 'شعر', title: '../blog/1/' },
 ]);
 // create an array with edges
 var edges = new vis.DataSet([
@@ -119,45 +119,54 @@ function timeSinceUpdate(lastUpdate) {
         return value === 1 ? singular : plural;
     }
 
-    const parts = [];
-    if (diffMonths > 0) {
-        parts.push(`${diffMonths} ${pluralize(diffMonths, 'month', 'months')}`);
-    } else if (diffWeeks > 0) {
-        parts.push(`${diffWeeks} ${pluralize(diffWeeks, 'week', 'weeks')}`);
-    } else if (diffDays > 0) {
-        parts.push(`${diffDays} ${pluralize(diffDays, 'day', 'days')}`);
-    } else {
-        if (diffHours > 0) {
-            parts.push(`${diffHours} ${pluralize(diffHours, 'hour', 'hours')}`);
-        }
-        if (diffMinutes > 0) {
-            parts.push(`${diffMinutes} ${pluralize(diffMinutes, 'min', 'min')}`);
-        }
-    }
+function pluralizeArabic(count, singular, dual, plural) {
+    if (count === 0) return `٠ ${plural}`; // للوضوح
+    if (count >= 3 && count <= 10) return `${count} ${plural}`;
+    return `${count} ${singular}`; // العدد فوق 10 يتبع المفرد في العربية
+}
 
-    if (parts.length === 0) {
-        parts.push(`${diffSeconds} ${pluralize(diffSeconds, 'second', 'seconds')}`);
+const parts = [];
+
+if (diffMonths > 0) {
+    parts.push(pluralizeArabic(diffMonths, 'شهر', 'شهرين', 'أشهر'));
+} else if (diffWeeks > 0) {
+    parts.push(pluralizeArabic(diffWeeks, 'أسبوع', 'أسبوعين', 'أسابيع'));
+} else if (diffDays > 0) {
+    parts.push(pluralizeArabic(diffDays, 'يوم', 'يومين', 'أيام'));
+} else {
+    if (diffHours > 0) {
+        parts.push(pluralizeArabic(diffHours, 'ساعة', 'ساعتين', 'ساعات'));
     }
-    return parts.join(', ');
+    if (diffMinutes > 0) {
+        parts.push(pluralizeArabic(diffMinutes, 'دقيقة', 'دقيقتين', 'دقائق'));
+    }
+}
+
+if (parts.length === 0) {
+    parts.push(pluralizeArabic(diffSeconds, 'ثانية', 'ثانيتين', 'ثوانٍ'));
+}
+
+return parts.join(' و ');
+
 }
 
 function fetchUpdateDetails() {
-        fetch("./update_log.json")
+        fetch("./update_log_ar.json")
             .then(response => response.json())
             .then(data => {
-                let updateHTML =``;
+                let updateHTML =`<div class="update_line">   <span class="tr_txt ">الإنطلاق </span>: <span class="tr_txt2">${data.pub}</span><br></div>`;
 
-            updateHTML += ``;
+            updateHTML += ` <div class="update_line">  <span class="tr_txt ">التحديث </span>: <span class="tr_txt2">${timeSinceUpdate(data.lastUpdate)}</span><br></div>`;
 
                 if (data.newFeatures.length > 0) {
-                    updateHTML += ` <div class="update_line"> <span class="tr_txt ">features</span>:`;
+                    updateHTML += ` <div class="update_line"> <span class="tr_txt ">الإضافات</span>:`;
                     data.newFeatures.forEach(feature => {
                         updateHTML += `<span class="tr_txt2">${feature}</span></div>`;
                     });
                 }
 
                 if (data.bugFixes.length > 0) {
-                    updateHTML += ` <div class="update_line"><span class="tr_txt ">bugFixes</span>: `;
+                    updateHTML += ` <div class="update_line"><span class="tr_txt ">التحسينات</span>: `;
                     data.bugFixes.forEach(fix => {
                         updateHTML += `<span class="tr_txt2">${fix}</span></div>`;
                     });

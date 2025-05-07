@@ -1,4 +1,14 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>عداد الزوار</title>
+</head>
+<body>
+  <h2 id="counter">جاري التحميل...</h2>
+  <p id="welcome" style="color: green; font-weight: bold;"></p>
 
+<script type="module">
   // إعداد Firebase
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
   import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
@@ -20,7 +30,7 @@ const firebaseConfig = {
   // التحديث الفوري
   onValue(countRef, (snapshot) => {
     const count = snapshot.exists() ? snapshot.val() : 0;
-    document.getElementById("counter").innerText = `${count}`;
+    document.getElementById("counter").innerText = `${count} زائر`;
   });
 
   // الزيادة مرة كل 24 ساعة فقط
@@ -41,3 +51,6 @@ const firebaseConfig = {
     document.getElementById("welcome").innerText = "أهلاً بك لأول مرة!";
   }
 
+</script>
+</body>
+</html>
